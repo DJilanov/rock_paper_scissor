@@ -1,5 +1,5 @@
 ﻿<div class="cards-container row m-0 border border-white">
-	<div class="col-12 col-md-4 offset-md-1 p-3 bg-light border border-white">
+	<div class="col-12 col-md-4 offset-md-1 p-3 border border-white">
 		<div [hidden]="userChoice !== 0" 
 			class="card text-center">
 			<img src="../../assets/images/rock.png"
@@ -20,11 +20,11 @@
 		</div>
 	</div>
 
-	<div class="col-12 col-md-2 p-3 bg-light border border-white text-center">
+	<div class="col-12 col-md-2 p-3 border border-white text-center">
 		<label>VS</label>
 	</div>
 
-	<div class="col-12 col-md-4 p-3 bg-light border border-white">
+	<div class="col-12 col-md-4 p-3 border border-white">
 		<div [hidden]="computerChoice !== 0" 
 			class="card text-center">
 			<img src="../../assets/images/comprock.png"
@@ -46,9 +46,9 @@
 	</div>
 </div>
 <div class="container text-center">
-	<h1 [hidden]="result !== 0">Draw</h1>
-	<h1 [hidden]="result !== 1">Lose</h1>
-	<h1 [hidden]="result !== 2">Win</h1>
+	<h1 [hidden]="result !== 0">Draw!</h1>
+	<h1 [hidden]="result !== 1">You Lose!</h1>
+	<h1 [hidden]="result !== 2">You Win!</h1>
 </div>
 <button (click)="playAgain()"
 	class="btn btn-outline-primary play-again">Play again</button>
