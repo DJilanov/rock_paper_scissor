@@ -1,0 +1,19 @@
+@import "assets/fonts/fonts";
+@import "variables";
+
+// BASE FONT SIZES, all rem units scale from these
+$body-font-size: 17px;
+$body-font-size-desktop: 22px;
+
+// GLOBAL APP STYLES
+.tiny-left-margin {
+    margin-left: 0.5rem;
+}
+
+.small-top-margin {
+    margin-top: 1rem;
+}
+
+.list-no-decoration {
+    list-style-type: none;
+}

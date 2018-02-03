@@ -1,0 +1,14 @@
+@import '../../variables';
+
+:host {
+    flex: 1 0 auto;
+}
+
+.about-me-page {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+img {
+    max-width: 100%;
+}

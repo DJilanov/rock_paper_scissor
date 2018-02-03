@@ -1,0 +1,282 @@
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">      
+        <div class="d-none d-xl-block col-xl-2 bd-toc">
+            <ul class="section-nav">
+                <li class="toc-entry toc-h2">
+                    <a [routerLink]="['/docs']" fragment="quick-start" translate>Quick start</a>
+                </li>
+                <li class="toc-entry toc-h2">
+                    <a [routerLink]="['/docs']" fragment="how-everything-works" translate>How everything works</a>
+                    <ul>
+                        <li class="toc-entry toc-h3">
+                            <a [routerLink]="['/docs']" fragment="how-translation-works" translate>How translation works</a>
+                        </li>
+                        <li class="toc-entry toc-h3">
+                            <a [routerLink]="['/docs']" fragment="how-event-bus-works" translate>How event bus works</a>
+                        </li>
+                        <li class="toc-entry toc-h3">
+                            <a [routerLink]="['/docs']" fragment="how-error-handler-works" translate>How error handler works</a>
+                        </li>
+                        <li class="toc-entry toc-h3">
+                            <a [routerLink]="['/docs']" fragment="what-modules-do-we-use" translate>What modules we use</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="toc-entry toc-h2">
+                    <a [routerLink]="['/docs']" fragment="project-structure" translate>Project structure</a>
+                </li>
+                <li class="toc-entry toc-h2">
+                    <a [routerLink]="['/docs']" fragment="community" translate>Contributing</a>
+                </li>
+            </ul>
+        </div>
+      
+
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+            <h1 class="bd-title" id="content" translate>Introduction</h1>
+            <p class="bd-lead" translate>Get started with Angular 5 boilerplate that utilize service bus architecture, that helps you to build responsive, bulletproof projects on the web with the boilerplate that is great from the smallest to atomic projects.</p>
+            
+            <h2 id="quick-start">
+                <div>
+                    <span translate>Quick start</span>
+                    <a class="anchorjs-link " href="#quick-start" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a>
+                </div>
+            </h2>
+            <p>
+                <span translate>Looking to quickly use that boilerplate for your project? Just </span>
+                <a target="_blank" href="https://github.com/DJilanov/Angular5-event-driven-boilerplate" translate>clone the boilerplate from GitHub</a>
+                <span translate>. All you need is NPM to install the modules and you are ready to go!</span>
+            </p>
+            <p translate>To start with the boilerplate, just follow the steps:</p>
+            <ol>
+                <li>
+                    <a target="_blank" href="https://github.com/DJilanov/Angular5-event-driven-boilerplate" translate>Clone the boilerplate from GitHub</a>
+                </li>
+                <li>
+                    <span translate>Install </span>
+                    <a target="_blank" href="https://docs.npmjs.com/cli/install" translate>node package manager</a>
+                    <span translate>or </span>
+                    <a target="_blank" href="https://yarnpkg.com/en/" translate>Yarn</a>
+                </li>
+                <li>
+                    <span translate>If you have NPM go to the root of the project and type in the console </span>
+                    <code>npm install</code>
+                    <span translate>or if you are using Yarn just type </span>
+                    <code>yarn</code></li>
+                <li>When it finish, if you are using NPM type in the console<code>npm run start</code>or if you are using Yarn just type <code>yarn start</code></li>
+                <li>If the end of the build tells you<code>webpack: Compiled successfully.</code> you are ready to go!</li>
+            </ol>
+            <h2 id="how-everything-works">
+                <div>How everything works<a class="anchorjs-link " href="#how-everything-works" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h2>
+            <p>TODO</p>
+            <h4 id="how-translation-works">
+                <div>How translation works<a class="anchorjs-link " href="#how-translation-works" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h4>
+            <p translate>To start with the translate, just follow the steps:</p>
+            <ol>
+                <li>
+                    <span translate>Place our translate directive </span>
+                    <code>translate</code>
+                    <span translate>over the text container</span>
+                </li>
+                <li>
+                    It will use the json translation from <code>app/shared/translation/languages</code> based on the current text in the container
+                </li>
+                <li>
+                    You can change the default language from English into the service.
+                </li>
+                <li>
+                    <span>To activate the translation in a component, just fire </span>
+                    <code>
+                        <span class="d-none">{{</span>
+                        this.eventBusService.emitTranslate({});
+                        <span class="d-none">{{</span>
+                    </code>
+                    <span>in the </span>
+                    <code>ngOnInit</code>
+                </li>
+            </ol>
+            <h4 id="how-event-bus-works">
+                <div>
+                    <span>How event-bus works</span>
+                    <a class="anchorjs-link " href="#how-event-bus-works" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h4>
+            <p>Simple example how the event bus works is our error handling:</p>
+            <pre ngNonBindable>
+                <code class="language-js" data-lang="js">
+                    <span class="d-none">{{</span>
+                        this.eventBusService.emitRequestError({
+                            errorMessage: errorMessage
+                        });
+                    <span class="d-none">}}</span>
+                </code>
+            </pre>
+            <p>We send a simple event via the bus and the data will be usable by just subscribing like:</p>
+            <pre ngNonBindable>
+                <code class="language-js" data-lang="js">
+                    <span class="d-none">{{</span>
+                        this.eventBusService.requestError.subscribe(
+                            (data) => this.showError(data)
+                        );
+                    <span class="d-none">}}</span>
+                </code>
+            </pre>
+            <p>You are able to transfer data between component without any hierarchy with much higher maintainability while keeping it easy to debug by having one source of truth</p>
+            <h4 id="how-error-handler-works">
+                <div>How error-handler works<a class="anchorjs-link " href="#how-error-handler-works" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h4>
+            <p>When we call for something from the back-end in our services, our code usually looks like this:</p>
+            <pre ngNonBindable>
+                <code class="language-js" data-lang="js">
+                    <span class="d-none">{{</span>
+                    this.backendService.getSomething(arg1, arg2, ....)
+                        .subscribe(
+                            response => {
+                                // do something on success
+                            },
+                            error => {
+                                // do something on error
+
+                                // ...
+
+                                // send the error by the error handler service where it 
+                                // is send to the error-handler component via the event bus 
+                                this.errorHandlerService.handleRequestError(error);
+                            },
+                            () => {
+                                // do something then
+                            }
+                        );
+                    <span class="d-none">}}</span>
+                </code>
+            </pre>
+            <p>The whole idea of the Error handler service is to controll all the ways we show to the client, that something happened by showing a single dialog in the bottom of the page to a full custom retry functionality you are free to experiment by your self by sending the correct event bus messages and expanding the 2 services</p>
+            <h4 id="what-modules-do-we-use">
+                <div>What modules do we use<a class="anchorjs-link " href="#what-modules-do-we-use" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h4>
+            <details>
+                <summary class="text-primary mb-3">Show modules</summary>
+                <ul>
+                    <li>@angular/animations-v5.0.2</li>
+                    <li>@angular/common-v5.0.2</li>
+                    <li>@angular/compiler-v5.0.2</li>
+                    <li>@angular/compiler-cli-v5.0.2</li>
+                    <li>@angular/core-v5.0.2</li>
+                    <li>@angular/forms-v5.0.2</li>
+                    <li>@angular/http-v5.0.2</li>
+                    <li>@angular/platform-browser-v5.0.2</li>
+                    <li>@angular/platform-browser-dynamic-v5.0.2</li>
+                    <li>@angular/router-v5.0.2</li>
+                    <li>@angular/cli-v1.4.4</li>
+                    <li>@types/grecaptcha-v2.0.31</li>
+                    <li>@types/hammerjs-v2.0.34</li>
+                    <li>@types/jasmine-v2.5.40</li>
+                    <li>@types/node-v7.0.0</li>
+                    <li>@types/protractor-v4.0.0</li>
+                    <li>@types/selenium-webdriver-v2.53.39</li>
+                    <li>@types/source-map-v0.5.0</li>
+                    <li>@types/uglify-js-v2.6.28</li>
+                    <li>core-js-v2.4.1</li>
+                    <li>rxjs-v5.5.2</li>
+                    <li>zone.js-v0.8.10</li>
+                    <li>typescript-v2.5.1</li>
+                    <li>jasmine-core-v2.8.0</li>
+                    <li>jasmine-spec-reporter-v4.2.1</li>
+                    <li>karma-v2.0.0</li>
+                    <li>karma-chrome-launcher-v2.2.0</li>
+                    <li>karma-cli-v1.0.1</li>
+                    <li>karma-coverage-istanbul-reporter-v0.2.0</li>
+                    <li>karma-jasmine-v1.1.1</li>
+                    <li>karma-jasmine-html-reporter-v0.2.2</li>
+                    <li>node-sass-v4.5.2</li>
+                    <li>protractor-v5.2.2</li>
+                    <li>ts-node-v4.1.0</li>
+                    <li>tslint-v5.8.0</li>
+                    <li>codelyzer-v4.0.2</li>
+                </ul>
+            </details>
+
+            <h2 id="project-structure">
+                <div>Project structure<a class="anchorjs-link " href="#project-structure" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h2>
+            <p>To work with that boilerplate you need to know the basics of Angular. Here is good <a target="_blank" href="https://angular.io/docs">source to learn</a> of the basics of Angular</p>
+            <code>
+                <ul class="list-no-decoration project-structure">
+                    <li>
+                        src - Contains all of the front-end code
+                    </li>
+                    <li>
+                        <ul class="list-no-decoration">
+                            <li>
+                                app - Contains all of the scripts
+                            </li>
+                            <li>
+                                <ul class="list-no-decoration">
+                                    <li>
+                                        core - Contains all of the core services for the app
+                                    </li>
+                                    <li>
+                                        feedback - Contains all of the directives, components and services for user interaction for events and errors
+                                    </li>
+                                    <li>
+                                        services - Contains all of the services that are used for data transformation of the fetched from back-end
+                                    </li>
+                                    <li>
+                                        shared - Contains all of the directives, components and services that are used in multiple locations
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                assets - Contains all of the fonts, images and other assets.
+                            </li>
+                            <li>
+                                <ul class="list-no-decoration">
+                                    <li>
+                                        fonts - Contains all of the fonts
+                                    </li>
+                                    <li>
+                                        images - Contains all of the images
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                enviroments - Contains all of the enviroment variables.
+                            </li>
+                            <li>
+                                <ul class="list-no-decoration">
+                                    <li>
+                                        enviroment.local.ts - Contains all of the enviroment variables for the local development
+                                    </li>
+                                    <li>
+                                        enviroment.prod.ts - Contains all of the enviroment variables for the prod development
+                                    </li>
+                                    <li>
+                                        enviroment.ts - Contains all of the enviroment variables for when enviroment is not selected
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                styles.scss - Contains all of the global styling.
+                            </li>
+                            <li>
+                                index.html - Contains the basic HTML page of the app.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        package.json - Contains all of the used modules.
+                    </li>
+                    <li>
+                        .angular-cli.json.json - Contains all of the build procedures.
+                    </li>
+                </ul>
+            </code>
+            
+            <h2 id="community">
+                <div>Contributing<a class="anchorjs-link " href="#community" aria-label="Anchor" data-anchorjs-icon="#" style="padding-left: 0.375em;"></a></div>
+            </h2>
+            <p>From code and documentation to web design and support, we always welcome contributions from anyone willing to put in the time and effort to help us and our community of users. Whether you're a grizzled open-source veteran or a curious newcomer, if you want to get involved, just send me <a href= "mailto:djilanov@gmail.com" >email</a> or directly make an pull request in the github!</p>
+        </main>
+    </div>
+</div>
