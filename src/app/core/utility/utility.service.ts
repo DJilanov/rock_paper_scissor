@@ -1,52 +1,51 @@
 ﻿import { Injectable } from '@angular/core';
 
-const smallDeviceAverageSize = 1800;
+const choiceEnum = [
+	"rock",
+	"paper",
+	"scissor"
+]
 
 @Injectable()
 export class UtilityService {
 
+	private result = {
+		'wins': 0,
+		'losses': 0,
+		'ties': 0
+	};
+
 	constructor() { }
 
-	treatAsUtc(date): any {
-		const result = new Date(date);
-		result.setMinutes(result.getMinutes() + result.getTimezoneOffset());
-		return result;
-	}
-
-	daysBetween(startDate: Date, endDate: Date): number {
-		const millisecondsPerDay = 24 * 60 * 60 * 1000;
-		return (this.treatAsUtc(endDate) - this.treatAsUtc(startDate)) / millisecondsPerDay;
-	}
-
-	formatPhoneNumber(phoneNumber): string {
-		let newNumber = phoneNumber.replace(/\D/g, '');
-		if (newNumber.charAt(0) === 0) {
-			newNumber = newNumber.substring(1);
+	public processResult(userChoiceIndex, aiChoiceIndex): number {
+		let mathResult = (3 + aiChoiceIndex - userChoiceIndex) % 3;
+		if (!mathResult) {
+		  ++this.result['ties'];
+		} else if(1 == mathResult) {
+		  ++this.result['losses'];
+		} else {
+		  ++this.result['wins'];
 		}
-		// TODO: Add default number for which language
-		newNumber = '+359' + newNumber;
-		return newNumber;
+		return mathResult;
 	}
 
-	isLocalStorageNameSupported(): Boolean {
-		const testKey = 'test', storage = window.localStorage;
-		try {
-			storage.setItem(testKey, '1');
-			storage.removeItem(testKey);
-			return true;
-		} catch (error) {
-			return false;
-		}
+	public getResult() {
+		return this.result;
 	}
 
-	isSmallDevice(): boolean {
-		var w = window,
-			d = document,
-			e = d.documentElement,
-			g = d.getElementsByTagName('body')[0],
-			width = w.innerWidth || e.clientWidth || g.clientWidth,
-			height = w.innerHeight || e.clientHeight || g.clientHeight;
-
-		return width + height < smallDeviceAverageSize;
+	public getRandomChoice(): number {
+		return this.getRandomSmall();
+	}
+	/*
+		This function is good only for 1 or 2 digit numbers.
+	*/
+	public getRandomSmall(): number {
+		return Math.floor(Math.random() * Math.floor(choiceEnum.length));
+	}
+	/*
+		This function should give you roughly the same number of 1-digit numbers as 2-digit numbers and as 3-digit numbers.
+	*/
+	public getRandomPowewall(min: number, max: number): number {
+		return Math.floor(Math.exp(Math.random()*(Math.log(max)-Math.log(min)))*min);
 	}
 }

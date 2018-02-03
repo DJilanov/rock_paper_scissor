@@ -1,7 +1,7 @@
 {
-  "name": "angular5-website-admin-panel",
+  "name": "angular5-rock-paper-scissor",
   "version": "1.0.0",
-  "description": "Angular 5 single page admin panel utilizing service bus architecture",
+  "description": "Angular 5 rock paper scissor utilizing service bus architecture",
   "main": "dist/bundle.js",
   "repository": "",
   "author": "Dimitar Jilanov",

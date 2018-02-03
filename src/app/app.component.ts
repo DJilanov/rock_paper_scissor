@@ -33,10 +33,6 @@ export class AppComponent implements OnInit {
 		);
 	}
 
-	isSmallDevice(): boolean {
-		return this.utilityService.isSmallDevice();
-	}
-
 	updateSharedOptions(options) {
 		
 	}

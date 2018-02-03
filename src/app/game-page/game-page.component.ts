@@ -1,12 +1,12 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
+import { UtilityService } from '../core/utility/utility.service';
 import { BackendService } from '../core/backend/backend.service';
-import { ErrorHandlerService } from '../core/error-handler/error-handler.service';
 import { EventBusService } from '../core/event-bus/event-bus.service';
+import { ErrorHandlerService } from '../core/error-handler/error-handler.service';
 
 const sharredOptions = {
-	search: true
+	search: false
 };
 
 @Component({
@@ -15,29 +15,34 @@ const sharredOptions = {
 	styleUrls: ['./game-page.component.scss']
 })
 export class GamePageComponent {
-
-	private fragment: string;
+	
+	public enableSelect: boolean = true;
 
 	constructor(
-		private router: Router,
-		private route: ActivatedRoute,
+		private utilityService: UtilityService,
 		private backendService: BackendService,
 		private eventBusService: EventBusService,
 		private errorHandlerService: ErrorHandlerService
 	) {
 		this.eventBusService.emitChangeSharedOptions(sharredOptions);
-	}
-	
-	ngAfterViewInit() {
-		this.route.fragment.subscribe(fragment => {
-			this.fragment = fragment; 
-			try {
-				this.scrollToEl();
-			} catch (e) { }
-		});
+		this.eventBusService.playAgain.subscribe(() => this.onPlayAgain());
+		this.eventBusService.userSelect.subscribe((eventData) => this.onUserSelect(eventData));
 	}
 
-	scrollToEl() {
-		document.querySelector('#' + this.fragment).scrollIntoView();
+	private onPlayAgain() {
+		this.enableSelect = true;
+	}
+
+	private onUserSelect(eventData) {
+		this.enableSelect = false;
+		let userChoice = eventData.choice;
+		let computerChoice = this.utilityService.getRandomChoice();
+		// TODO: Save it at history
+		let result = this.utilityService.processResult(userChoice, computerChoice);
+		this.eventBusService.emitProcessedResult({
+			result: result,
+			userChoice: userChoice,
+			computerChoice: computerChoice
+		});
 	}
 }
