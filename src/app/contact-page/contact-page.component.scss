@@ -7,8 +7,16 @@
 .about-me-page {
     padding-top: 3rem;
     padding-bottom: 3rem;
-}
 
-img {
-    max-width: 100%;
+    .left {
+        float: left;
+        
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .right {
+        float: right;
+    }
 }
