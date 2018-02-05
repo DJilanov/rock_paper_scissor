@@ -16,7 +16,7 @@ Just type npm run build-prod and deploy the dist folder
 
 ## How to test
 
-Just type npm run e2e for r2r tests and npm run test for unit testing
+Just type npm run e2e for e2e tests and npm run test for unit testing
 
 ## Known issues
 
