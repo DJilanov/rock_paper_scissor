@@ -21,6 +21,7 @@ describe('BackendService', () => {
 					},
 					deps: [MockBackend, BaseRequestOptions]
 				},
+				BackendService,
 				MockBackend,
 				BaseRequestOptions,
 				HttpClientModule

@@ -6,6 +6,7 @@ import {
 	Http, HttpModule, XHRBackend, ResponseOptions,
 	Response, BaseRequestOptions
 } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 
@@ -26,7 +27,8 @@ describe('AppComponent', () => {
 					deps: [MockBackend, BaseRequestOptions]
 				},
 				MockBackend,
-				BaseRequestOptions
+				BaseRequestOptions,
+				HttpClientModule
 			],
 			declarations: [
 				AppComponent
@@ -37,7 +39,8 @@ describe('AppComponent', () => {
 				SharedModule,
 				FeedbackModule,
 				ComponentsModule,
-				RouterTestingModule
+				RouterTestingModule,
+				HttpModule, HttpClientModule
 			]
 		});
 	});
