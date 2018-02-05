@@ -1,6 +1,6 @@
 import { DJBoilerplateWebPage } from './app.po';
 
-describe('angular5-service-bus-boilerplate App', function () {
+describe('angular5-rock-paper-scissor-app', function () {
 	let page: DJBoilerplateWebPage;
 
 	beforeEach(() => {
@@ -9,6 +9,6 @@ describe('angular5-service-bus-boilerplate App', function () {
 
 	it('should display message saying app works', () => {
 		page.navigateTo();
-		expect(page.getParagraphText()).toEqual('app works!');
+		expect(page.getParagraphText()).toEqual('Angular 5 Rock Paper Scissors game that utilize service bus architecture');
 	});
 });

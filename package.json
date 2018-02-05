@@ -8,7 +8,9 @@
   "scripts": {
     "start": "ng serve",
     "start-aot": "ng serve --aot",
-    "build-prod": "ng build --prod"
+    "build-prod": "ng build --prod",
+    "test": "ng test",
+    "e2e": "ng e2e"
   },
   "dependencies": {
     "@angular/animations": "5.2.2",

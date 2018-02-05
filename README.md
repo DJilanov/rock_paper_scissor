@@ -14,6 +14,10 @@ Just type npm run start for JIT compilation and host on localhost:4200 or npm ru
 
 Just type npm run build-prod and deploy the dist folder
 
+## How to test
+
+Just type npm run e2e for r2r tests and npm run test for unit testing
+
 ## Known issues
 
 1. If you are using windows and doesn't have Visual Studio, you are most likely recieving:
