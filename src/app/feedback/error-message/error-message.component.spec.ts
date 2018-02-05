@@ -1,6 +1,7 @@
 ﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { CoreModule } from '../../core/core.module';
 
 import { ErrorMessageComponent } from './error-message.component';
 
@@ -12,7 +13,7 @@ describe('ErrorMessageComponent', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			declarations: [ErrorMessageComponent],
-			imports: [CommonModule, FormsModule, ReactiveFormsModule],
+			imports: [CommonModule, CoreModule],
 		});
 		fixture = TestBed.createComponent(ErrorMessageComponent);
 		component = fixture.componentInstance;

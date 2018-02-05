@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { BackendService } from '../core/backend/backend.service';
-import { ErrorHandlerService } from '../core/error-handler/error-handler.service';
 import { EventBusService } from '../core/event-bus/event-bus.service';
 
 const sharredOptions = {
@@ -17,10 +14,7 @@ const sharredOptions = {
 export class ContactPageComponent implements OnInit {
 
 	constructor(
-		private router: Router,
-		private backendService: BackendService,
-		private eventBusService: EventBusService,
-		private errorHandlerService: ErrorHandlerService
+		private eventBusService: EventBusService
 	) {
 		this.eventBusService.emitChangeSharedOptions(sharredOptions);
 	}

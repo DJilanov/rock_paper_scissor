@@ -25,5 +25,6 @@ export class ErrorHandlerService {
 		this.eventBusService.emitRequestError({
 			errorMessage: errorMessage
 		});
+		return errorMessage;
 	}
 }

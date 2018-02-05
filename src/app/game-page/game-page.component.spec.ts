@@ -1,22 +1,27 @@
 ﻿/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { InformationalPageComponent } from './informational-page.component';
+import { CoreModule } from '../core/core.module';
+
+import { ComponentsModule } from '../components/components.module';
+import { GamePageComponent } from './game-page.component';
 
 describe('InformationalPageComponent', () => {
-	let component: InformationalPageComponent;
-	let fixture: ComponentFixture<InformationalPageComponent>;
+	let component: GamePageComponent;
+	let fixture: ComponentFixture<GamePageComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [InformationalPageComponent]
+			declarations: [GamePageComponent],
+			imports: [CommonModule, CommonModule, ComponentsModule, CoreModule],
 		}).compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(InformationalPageComponent);
+		fixture = TestBed.createComponent(GamePageComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

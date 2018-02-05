@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 
 import { UtilityService } from '../core/utility/utility.service';
-import { BackendService } from '../core/backend/backend.service';
 import { EventBusService } from '../core/event-bus/event-bus.service';
-import { ErrorHandlerService } from '../core/error-handler/error-handler.service';
 
 const sharredOptions = {
 	search: false
@@ -20,9 +18,7 @@ export class GamePageComponent {
 
 	constructor(
 		private utilityService: UtilityService,
-		private backendService: BackendService,
-		private eventBusService: EventBusService,
-		private errorHandlerService: ErrorHandlerService
+		private eventBusService: EventBusService
 	) {
 		this.eventBusService.emitChangeSharedOptions(sharredOptions);
 		this.eventBusService.playAgain.subscribe(() => this.onPlayAgain());

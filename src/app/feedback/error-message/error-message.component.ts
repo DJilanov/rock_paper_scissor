@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations'
 
-import { BackendService } from '../../core/backend/backend.service';
 import { EventBusService } from '../../core/event-bus/event-bus.service';
 
 declare var $: any;
@@ -33,7 +32,6 @@ export class ErrorMessageComponent {
 	errorMessage = '';
 
 	constructor(
-		private backendService: BackendService,
 		private eventBusService: EventBusService
 	) {
 		this.eventBusService.requestError.subscribe((data) => this.showError(data));

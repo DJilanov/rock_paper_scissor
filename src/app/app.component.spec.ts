@@ -1,5 +1,5 @@
 /* tslint:disable:no-unused-variable */
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { TestBed, async } from '@angular/core/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import {
@@ -8,6 +8,11 @@ import {
 } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
+
+import { CoreModule } from './core/core.module';
+import { ComponentsModule } from './components/components.module';
+import { SharedModule } from './shared/shared.module';
+import { FeedbackModule } from './feedback/feedback.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -27,7 +32,12 @@ describe('AppComponent', () => {
 				AppComponent
 			],
 			imports: [
-				FormsModule
+				CommonModule,
+				CoreModule,
+				SharedModule,
+				FeedbackModule,
+				ComponentsModule,
+				RouterTestingModule
 			]
 		});
 	});

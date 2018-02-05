@@ -33,7 +33,7 @@ describe('ErrorHandlerService', () => {
 					type: 'error'
 				}
 			}
-		})).toContain('Cannot connect to the server');
+		})).toContain('There is no internet connection to the server');
 	}));
 
 	it('should return correct error when the server is returning strange request', inject([ErrorHandlerService], (service: ErrorHandlerService) => {
