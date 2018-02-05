@@ -1,19 +1,17 @@
 ﻿import { Injectable } from '@angular/core';
 
+import { ResultModel } from '../../models/result.model';
+
 const choiceEnum = [
 	"rock",
 	"paper",
 	"scissor"
-]
+];
 
 @Injectable()
 export class UtilityService {
 
-	private result = {
-		'wins': 0,
-		'losses': 0,
-		'ties': 0
-	};
+	private result: ResultModel = new ResultModel();
 
 	constructor() { }
 
@@ -22,7 +20,7 @@ export class UtilityService {
 		if (!mathResult) {
 		  ++this.result['ties'];
 		} else if(1 == mathResult) {
-		  ++this.result['losses'];
+		  ++this.result['loses'];
 		} else {
 		  ++this.result['wins'];
 		}

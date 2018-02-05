@@ -1,6 +1,18 @@
 ## Description
 
-UndrDev
+Rock Paper Scissors NG2 app
+
+## How to install dependencies
+
+Just get npm and type npm install
+
+## How to run
+
+Just type npm run start for JIT compilation and host on localhost:4200 or npm run start-aot for AOT compilation 
+
+## How to deploy
+
+Just type npm run build-prod and deploy the dist folder
 
 ## Known issues
 

@@ -1,3 +1,17 @@
-﻿<div>
-	Score panel
+﻿<div class="score-panel row" >
+	<div class="col-md-3 p-4 p-md-5 border border-white">
+		Wins: {{score.wins}}
+	</div>
+	<div class="col-md-3 p-4 p-md-5 border border-white">
+		Loses: {{score.loses}}
+	</div>
+	<div class="col-md-3 p-4 p-md-5 border border-white">
+		Ties: {{score.ties}}
+	</div>
+	<div class="col-md-3 p-4 p-md-5 border border-white" [hidden]="!isFirstGame()">
+		It's your first game. Good luck!
+	</div>
+	<div class="col-md-3 p-4 p-md-5 border border-white" [hidden]="isFirstGame()">
+		Rate: {{getRate() | percent}}
+	</div>
 </div>
