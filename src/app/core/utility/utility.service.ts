@@ -43,7 +43,7 @@ export class UtilityService {
 	/*
 		This function should give you roughly the same number of 1-digit numbers as 2-digit numbers and as 3-digit numbers.
 	*/
-	public getRandomPowewall(min: number, max: number): number {
+	public getRandomPowerwall(min: number, max: number): number {
 		return Math.floor(Math.exp(Math.random()*(Math.log(max)-Math.log(min)))*min);
 	}
 }
